@@ -3,6 +3,7 @@
 namespace PhpSlides;
 
 use PhpSlides\Http\Response;
+use PhpSlides\Enums\ResponseType;
 use PhpSlides\Interface\StatusInterface;
 
 class Status implements StatusInterface
@@ -21,9 +22,9 @@ class Status implements StatusInterface
 	 * `Response::HTML`, `Response::CSV`, or `Response::XML`. If the provided `response` value is not one
 	 * of
 	 */
-	public function __construct (string $response = Response::JSON)
+	public function __construct (string $response = ResponseType::JSON)
 	{
-		$responseTypes = [ Response::JSON, Response::HTML, Response::CSV, Response::XML ];
+		$responseTypes = [ ResponseType::JSON, ResponseType::HTML, ResponseType::CSV, ResponseType::XML ];
 
 		if (!in_array($response, $responseTypes))
 		{
@@ -83,13 +84,13 @@ class Status implements StatusInterface
 
 		switch ($this->response)
 		{
-			case (Response::JSON):
+			case (ResponseType::JSON):
 				return Response::json($data, $this->status);
-			case (Response::HTML):
+			case (ResponseType::HTML):
 				return Response::html($data, $this->status);
-			case (Response::XML):
+			case (ResponseType::XML):
 				return Response::xml($data, $this->status);
-			case (Response::CSV):
+			case (ResponseType::CSV):
 				return Response::csv($data, $this->status);
 			default:
 				return Response::array($data, $this->status);
@@ -197,13 +198,13 @@ class Status implements StatusInterface
 
 		switch ($this->response)
 		{
-			case (Response::JSON):
+			case (ResponseType::JSON):
 				return Response::json($data, $status);
-			case (Response::HTML):
+			case (ResponseType::HTML):
 				return Response::html($data, $status);
-			case (Response::XML):
+			case (ResponseType::XML):
 				return Response::xml($data, $status);
-			case (Response::CSV):
+			case (ResponseType::CSV):
 				return Response::csv($data, $status);
 			default:
 				return Response::array($data, $status);
@@ -234,13 +235,13 @@ class Status implements StatusInterface
 
 		switch ($this->response)
 		{
-			case (Response::JSON):
+			case (ResponseType::JSON):
 				return Response::json($data, $status);
-			case (Response::HTML):
+			case (ResponseType::HTML):
 				return Response::html($data, $status);
-			case (Response::XML):
+			case (ResponseType::XML):
 				return Response::xml($data, $status);
-			case (Response::CSV):
+			case (ResponseType::CSV):
 				return Response::csv($data, $status);
 			default:
 				return Response::array($data, $status);

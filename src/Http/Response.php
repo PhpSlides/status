@@ -4,16 +4,10 @@ namespace PhpSlides\Http;
 
 use DOMDocument;
 use PhpSlides\StatusCode;
-use PhpSlides\Enums\ResponseType;
 use PhpSlides\Interface\ResponseInterface;
 
 class Response implements ResponseInterface
 {
-	const JSON = ResponseType::JSON;
-	const HTML = ResponseType::HTML;
-	const CSV = ResponseType::CSV;
-	const XML = ResponseType::XML;
-
 	/**
 	 * The function `json` in PHP sets the response header to indicate JSON content and returns the
 	 * JSON-encoded data along with the specified HTTP status code.

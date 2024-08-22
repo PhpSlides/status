@@ -10,7 +10,6 @@
         "email": "concodave@gmail.com",
         "homepage": "https://dconco.github.io"
     }],
-    "version": "0.0.1",
     "require": {
         "php": ">=8.2"
     },
