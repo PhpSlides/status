@@ -1,10 +1,10 @@
 # HTTP PhpSlides\Status
 
 <div align="center">
-   <img src="./images/status.jpeg" alt="" width="100%" />
+   <img src="./images/status.jpeg" alt="PhpSlides HTTP Icon" width="100%" />
 </div>
 
-## Installation
+## INSTALLATION
 
 After creating your PhpSlides project, navigate to the project directory and install PhpSlides-Status package using this command below:
 
@@ -14,13 +14,17 @@ composer require phpslides/status
 
 Or download the zip file directly from the released version, ectract the file and add it to a folder 📂 in your PhpSlides project.
 
-[Download phpslides\status zip](https://github.com/phpslides/status/releases/tag/v0.0.2)
+[Download phpslides\status zip](https://github.com/phpslides/status/releases/tag/v0.0.3)
 
-## EXPLANATION
+## QUICK START
 
 ### Using Status() class function
 
 Create a Status instance for API response. Which is used in PhpSlides API Controller Class
+
+```php
+$status = new Status();
+```
 
 ```php
 <?php
@@ -28,11 +32,12 @@ Create a Status instance for API response. Which is used in PhpSlides API Contro
 namespace App\Controller\Api;
 
 use PhpSlides\Status;
-use PhpSlides\Http\Interface\ApiController;
+use PhpSlides\Http\Request;
+use PhpSlides\Http\ApiController;
 
-final class UserController implements ApiController
+final class UserController extends ApiController
 {
-   public function index() {
+   public function index(Request $req) {
       $status = new Status();
    }
 }
@@ -65,15 +70,21 @@ it'll return default value an array form, which isn't recommended.
 Returning a default success message, using the `success()` method.
 
 ```php
+$status = new Status(Response::JSON);
+$status->success();
+```
+
+```php
 <?php
 
 namespace App\Controller\Api;
 
 use PhpSlides\Status;
 use PhpSlides\Enums\ResponseType;
-use PhpSlides\Http\Interface\ApiController;
+use PhpSlides\Http\Request;
+use PhpSlides\Http\ApiController;
 
-final class UserController implements ApiController {
+final class UserController extends ApiController {
    public function index() {
       $status = new Status(Response::JSON);
       return $status->success();
@@ -121,15 +132,17 @@ by default it's returning `ResponseType::JSON` for returning response in JSON fo
 
 namespace App\Controller\Api;
 
-use PhpSlides\Http\Interface\ApiController;
+use PhpSlides\Http\ApiController;
 use PhpSlides\Http\ResponseType;
+use PhpSlides\Http\Request;
 use PhpSlides\StatusCode;
 use PhpSlides\Status;
 
-final class UserController extends Controller
+final class UserController extends ApiController
 {
-   public function index(int $user_id) {
+   public function index(Request $req) {
       $status = new Status();
+      $user_id = $req->urlParam()->user_id;
 
       if ($user_id === 1) {
          $user = [
