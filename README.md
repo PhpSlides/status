@@ -14,9 +14,9 @@ composer require phpslides/status
 
 Or download the zip file directly from the released version, ectract the file and add it to a folder 📂 in your PhpSlides project.
 
-[Download phpslides\status zip](https://github.com/phpslides/status/releases/tag/v0.0.2)
+[Download phpslides\status zip](https://github.com/phpslides/status/releases/tag/v0.0.3)
 
-## EXPLANATION
+## Quick Start
 
 ### Using Status() class function
 
